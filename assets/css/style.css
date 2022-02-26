@@ -263,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 100%;
   visibility: visible;
 }
-@media (max-width: 1366px) {
+@media screen and (max-width: 1366px) {
   .navbar .dropdown .dropdown ul {
     left: -90%;
   }
@@ -286,7 +286,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-@media (max-width: 991px) {
+@media screen and (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
   }
@@ -448,19 +448,39 @@ h1, h2, h3, h4, h5, h6 {
 #hero .btn-get-started:hover {
   background: var(--main-ef-color);
 }
-@media (min-width: 1024px) {
-  #hero {
-    background-attachment: fixed;
+
+
+@media screen and (min-width: 2561px) {
+  .carousel-inner, #hero {
+    height: 40vh;
   }
 }
 
-@media (min-width: 2561px) {
+@media screen and (max-width: 1170px) {
+  .carousel-inner, #hero {
+    height: 70vh;
+  }
+}
+
+@media screen and (max-width: 915px) {
   .carousel-inner, #hero {
     height: 60vh;
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 775px) {
+  .carousel-inner, #hero {
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 524px) {
+  .carousel-inner, #hero {
+    height: 25vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
 
 #cont-rev {
     display: none;
@@ -477,13 +497,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 585px) {
-  .carousel-inner, #hero {
-    height: 60vh;
-  }
-}
-
-@media (max-width: 429px) {
+@media screen and (max-width: 429px) {
   #hero h1 {
     font-size: 20px;
     line-height: 10px;
@@ -495,26 +509,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 389px) {
-  .carousel-inner, #hero {
-    height: 40vh;
-  }
-}
 
-@media (max-width: 341px) {
-  #phone-number {
-    flex-wrap: wrap;
-  }
-  #phn {
-    margin-left: 0 !important;
-    margin-top: 5px;
-  }
-  #ml {
-    margin-right: 1.5rem;
-  }
-}
 
-@media (max-width: 315px) {
+@media screen and (max-width: 315px) {
   #body  {
     display: none;
   }
@@ -559,7 +556,7 @@ section {
   margin: 15px auto 0 auto;
   font-weight: 600;
 }
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .section-title p {
     width: 50%;
   }
@@ -1199,7 +1196,7 @@ section {
 /* Hide */
 .hide{
   visibility: hidden;
-  display: none;
+  display: none !important;
 }
 
 
