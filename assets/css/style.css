@@ -13,6 +13,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  overflow-x: hidden;
 }
 
 #upgrade-man {
@@ -375,7 +376,7 @@ h1, h2, h3, h4, h5, h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
+  width: 100vw;
   height: 90vh;
   background-size: cover;
   position: relative;
@@ -384,19 +385,32 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
 }
 
-.carousel-inner{
-  height: 90vh;
-  padding: 0;
-  margin: 0;
+.carousel-img-1,.carousel-img-2,.carousel-img-3{
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+
+  
+}
+.carousel-img-1 {
+  content:url("../img/bg-1.jpg");
+}
+.carousel-img-2 {
+  content:url("../img/bg-2.jpg");
+}
+.carousel-img-3 {
+  content:url("../img/bg-3.jpg");
+}
+.carousel-item .active{
+  height: 100%;
+  width: 100% ;
 }
 
-.img-carousel{
+.carousel-inner{
+  height: 100%;
   width: 100%;
-  height: auto;
-  vertical-align: middle;
-  margin: 0 auto;
-  padding: 0;
 }
+
 
 #hero:before {
   content: "";
@@ -456,29 +470,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media screen and (max-width: 1170px) {
-  .carousel-inner, #hero {
-    height: 70vh;
-  }
-}
 
-@media screen and (max-width: 915px) {
-  .carousel-inner, #hero {
-    height: 60vh;
-  }
-}
 
-@media screen and (max-width: 775px) {
-  .carousel-inner, #hero {
-    height: 40vh;
-  }
-}
 
-@media screen and (max-width: 524px) {
-  .carousel-inner, #hero {
-    height: 25vh;
-  }
-}
 
 @media screen and (max-width: 768px) {
 
@@ -495,23 +489,51 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 24px;
     margin-bottom: 30px;
   }
+  
 }
 
 @media screen and (max-width: 429px) {
   #hero h1 {
-    font-size: 20px;
-    line-height: 10px;
+    font-size: 25px;
   }
   #hero h2 {
-    font-size: 12px;
-    line-height: 10px;
-    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  #hero a {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 387px) {
+  #hero h1 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  #whatsapp,.back-to-top {
+    margin-bottom: 25px;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  #whatsapp {
+    margin-bottom: 100%;
+    top: 20px;
+    margin-right: -30px;
   }
 }
 
 
-
 @media screen and (max-width: 315px) {
+  #body  {
+    display: none;
+  }
+  #upgrade-man {
+    display: block;
+  }
+}
+
+@media screen and (max-height: 315px) {
   #body  {
     display: none;
   }
