@@ -1,4 +1,3 @@
-
 (function() {
   "use strict";
 
@@ -13,7 +12,6 @@
       return document.querySelector(el)
     }
   }
-
 
   /**
    * Easy event listener function
@@ -33,29 +31,11 @@
    * Easy on scroll event listener 
    */
   const onscroll = (el, listener) => {
+    
     el.addEventListener('scroll', listener)
   }
 
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
+ 
   /**
    * Scrolls to an element with header offset
    */
@@ -70,33 +50,13 @@
     })
   }
 
-  /**
-   * Header fixed top on scroll
-   */
-  // let selectHeader = select('#header')
-  // if (selectHeader) {
-  //   let headerOffset = selectHeader.offsetTop
-  //   let nextElement = selectHeader.nextElementSibling
-  //   const headerFixed = () => {
-  //     if ((headerOffset - window.scrollY) <= 0) {
-  //       selectHeader.classList.add('fixed-top')
-  //       nextElement.classList.add('scrolled-offset')
-  //     } else {
-  //       selectHeader.classList.remove('fixed-top')
-  //       nextElement.classList.remove('scrolled-offset')
-  //     }
-  //   }
-  //   window.addEventListener('load', headerFixed)
-  //   onscroll(document, headerFixed)
-  // }
-
-  /**
+   /**
    * Back to top button
    */
   let backtotop = select('.back-to-top')
   if (backtotop) {
     const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 200) {
         backtotop.classList.add('active')
       } else {
         backtotop.classList.remove('active')
@@ -113,35 +73,10 @@
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
+      $('#header').toggleClass('top-zindex')
+    
+    $('body').toggleClass('noscroll')
   })
-
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
 
   /**
    * Scroll with ofset on page load with hash links in the url
@@ -209,23 +144,6 @@
     }
   });
 
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
 
   /**
    * Animation on scroll
@@ -240,3 +158,190 @@
   });
 
 })()
+
+
+ /**
+   * Navbar links active state on scroll 
+   */
+$list = $('#navbarlist')
+$activ = $('#herol,#aboutl,#serv3,#serv,#contl');
+$touchstarted=false
+
+/**Wont work on tactil devices */
+$(window).on('touchstart', function(){
+  $touchstarted=true
+});
+
+
+$(window).on('scroll',function(){
+  $measures();
+  
+  if ($available < $imgHeight && !$(".mobile-nav-toggle").is(":visible")) {
+    $('#logo').css("left", "-260px");
+    $('.img-logo').css("left","20px")
+  }
+  if ($available <= 0 && !$(".mobile-nav-toggle").is(":visible")) {
+    $('#header').css("background-color","#000000b8")
+  }
+
+
+  if (window.scrollY <=0 && !$(".mobile-nav-toggle").is(":visible")) {
+    $('#header').css("background-color","#00000099");
+    $('#logo').css("left", "0");
+    $('.img-logo').css("left","-200px")
+
+    $activ.removeClass('active')
+   $('#herol').addClass('active')
+ }
+
+ if ($touchstarted && $activ.hasClass('hovered')) {
+   $activ.removeClass('hovered')
+   
+ }
+  if ($collapseshown) {
+  $measures()
+  $movelist();    
+  }
+})
+
+const boxes= document.querySelectorAll(".box");
+const options ={
+threshold: 0.17
+}
+const verifyvisibility = (entries) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting && !$(".mobile-nav-toggle").is(":visible")) {
+    $entry =entry.target.id;
+     if ($entry=='hero') {
+       $activ.removeClass('active')
+      $('#herol').addClass('active')
+      
+    }
+    if ($entry=='about') {
+      $activ.removeClass('active')
+      $('#aboutl').addClass('active')
+      
+    }
+    if ($entry=='portfolio') {
+      $activ.removeClass('active')
+      $('#serv3').addClass('active')
+      
+    }
+    if ($entry=='contact') {
+      $activ.removeClass('active')
+      $('#contl').addClass('active')
+      
+    }
+  }}}
+let observer = new IntersectionObserver(verifyvisibility,options);
+for (const box of boxes) {
+  observer.observe(box);
+}
+
+  /**
+   * Move dropdown menu acording to the space available above or below
+   */
+  /*Create a variable to know if dropdown menu is open and if it is open it will move up or down on scroll
+ */
+    $collapseshown=false;
+
+    $list.on('show.bs.collapse', function () {
+      $collapseshown=true;
+      $measures();
+      $movelist();
+})
+
+/*Determine the space available*/
+   function $measures(){
+    $listheight =$list.outerHeight(true);
+    $scroll = $(window).scrollTop();
+    $fromnavdistance = $('#header').offset().top;
+    $available = ($fromnavdistance - $scroll);
+    $spacebelow = $(window).height() - $(header)[0].getBoundingClientRect().bottom;
+    $imgHeight = $('#logo').outerHeight();
+    $width = $available*$imgHeight/100;
+    }
+
+    function $movelist() {
+      if ($available >= $listheight && $list.hasClass("down") && $spacebelow < $listheight) {
+        $list.removeClass("down");
+      }
+      else if ( $spacebelow >= $listheight || $available < $listheight ){
+        $list.addClass("down");}
+      }
+
+    /*Avoid AutoClose while doing click on dropdown menu*/
+
+    $("#navbarlist").on('click',function(e){
+      e.stopPropagation();
+    });
+  
+
+
+/**Close Dropdown Menu when focusOut o when a link inside is clicked*/
+
+$(document).on('click',function(){
+  if($collapseshown){
+    $closelist()
+  }
+});
+$('.alink').on('click', function(){
+  $closelist()
+})
+
+  /**
+   * Close Mobile Navbar when a link inside is clicked
+   */
+   $activ.on('click',function(){
+    if ($(".mobile-nav-toggle").is(":visible")) {
+      $closenavmobile()
+    } 
+    
+  })
+function $closenavmobile(){
+      $('#navbar').toggleClass('navbar-mobile')
+      $('body').toggleClass('noscroll')
+      $('#header').toggleClass('top-zindex')
+      $('.mobile-nav-toggle').toggleClass('bi-x bi-list')
+      // $('.mobile-nav-toggle').toggleClass('bi-x')
+}
+
+
+/**Close sublist inside Dropdown menu when focus out */
+
+$sublist=$('#collap-a,#collap-b,#collap-c')
+
+function $closelist(){
+  
+  if($list.hasClass("show") ){
+    new bootstrap.Collapse($list, {
+      hide:true})}
+
+      if ($('#collap-a').hasClass("show")){
+        new bootstrap.Collapse($sublist[0], {
+          hide:true})}
+
+          if ($('#collap-b').hasClass("show")){
+            new bootstrap.Collapse($sublist[1], {
+              hide:true})}
+
+              if ($('#collap-c').hasClass("show")){
+                new bootstrap.Collapse($sublist[2], {
+                  hide:true})}         
+  
+}
+/**This will close both list when resizing to avoid visual glitches */
+$(window).resize(function(){
+	if($(".mobile-nav-toggle").is(":visible")){
+  $closelist()
+  }
+  if(!$(".mobile-nav-toggle").is(":visible") && $('#navbar').hasClass('navbar-mobile')){
+    $closenavmobile()
+  }
+})
+
+
+
+
+
+
