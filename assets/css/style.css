@@ -440,17 +440,15 @@ h1,h2, h3, h4, h5, h6 {
 .img-logo img{
   height: 10vh;
   top: -1px;
-  
-
-  /* position: absolute;
-  top: -100vh; */
 }
 .img-hero {
   position: sticky;
-  top: 0;
+  /* top: 0; */
   z-index: 1;
+
 }
 .img-hero img{
+  visibility: hidden;
   position: absolute;
   top: 10px;
   left: 0px;
@@ -1134,57 +1132,6 @@ section {
 
 
 
-/* REVIEW PANEL*/
-
-.top-review {
-  
-  overflow-x: hidden;
-}
-
-.container-reviews {
-  display: block;
-  position: relative;
-  margin: auto;
-  top: 0;
-  width: 67%;
-  display: block;
-  border: 1px solid #868686 ;
-  padding-bottom: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.containreview{
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 330px; 
-}
-
-.opinion-btn{
-  background-color: #1a73e8;
-    border: 1px solid #1a73e8;
-    border-radius: 2px;
-    border-radius: 2px;
-    cursor: pointer;
-    display: block;
-    font-size: 11px;
-    font-weight: bold;
-    height: 27px;
-    min-width: 54px;
-    padding: 0 8px;
-    text-align: center;
-    text-decoration: none;
-    top: 30px;
-    right: 30px;
-    position: absolute;
-}
-
-.opinion-txt{
-  color: white;
-}
-.opinion-txt:hover{
-  text-decoration: underline;
-  color: white;
-}
-
 /* SCROLL BAR LIKE GOOGLE*/
 .googlestyle::-webkit-scrollbar-track
 {	
@@ -1202,7 +1149,7 @@ section {
     border-right: 0;
 }
 
-/*END REVIEW PANEL*/
+
 
 .rowicon{
   position: fixed;
@@ -1246,4 +1193,34 @@ section {
   -webkit-filter: drop-shadow(0px 10px 10px var(--hover-color));
   filter: drop-shadow(0px 10px 10px var(--hover-color));
   transform: scale(1.2);
+}
+
+.contact-reviews{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  
+}
+
+.container-review iframe{
+  padding: 10px 0px;
+  border: 1px solid #868686 ;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-width: 515px ;
+
+}
+.container-map {
+  display: flex;
+  max-width: 500px;
+}
+.contact-reviews .map{
+  width: 500px;
+  min-width: calc(100vw*.35);
+  height: 300px;
+  margin-bottom: 20px;
+}
+.contact-reviews .review{
+  margin-left: 20px;
+  width: calc(100vw*.45);
+  min-width: 400px;
+  height: 300px;
 }

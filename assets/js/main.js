@@ -159,6 +159,10 @@
 
 })()
 
+$(document).ready(function(){
+$('#logo').css("visibility","visible")
+
+
 
  /**
    * Navbar links active state on scroll 
@@ -339,9 +343,4 @@ $(window).resize(function(){
     $closenavmobile()
   }
 })
-
-
-
-
-
-
+});

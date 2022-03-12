@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Reviews Manual Widget</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+
+
+</head>
+<body >
+
+
+<div class="container" style="display: none;">
+    <div class="main" >
+        <a id="name" href="">Nombre del Negocio</a>
+        <p>Location</p>
+        
+        <button class="opinion-btn">
+            <i class="bi bi-pencil"></i>
+            <a href="https://www.google.com/search?q=Alejandra+Beauty+Salon+%26+Spa&rlz=1C1ALOY_en&sourceid=chrome&ie=UTF-8#lrd=0x9105b7d653f64f05:0x77a98194d61b8282,3,,," target="_blank" class="opinion-txt">Escribir Una Opinión</a>
+          </button>
+    </div>
+    <div class="main-stars">
+        <div class="average">4.5</div>
+        <div class="stars">
+            <div>
+                <img src="assets/img/greviews-bg.png" class="starbg">
+            </div>
+            <div class="container-star" style="width: calc(5/5*100%);">
+            <img src="assets/img/greviews.png" class="star-top">
+            </div>
+            
+        </div>
+        <a href="" class="review-count">number of reviews</a>
+    </div>
+
+    <div class="reviews" id="googlestyle" style="height: auto;">
+        <div class="comment">
+            <img class="profile-photo " src="assets/img/person1.png">
+
+                <div class="comment-content">
+                    <a href="" class="profile-name">nombre</a>
+                    <a href="" class="opinions">reviews given</a>
+                    <a href="" class="review-date">review date</a>
+                    <div class="stars-comment">
+                        <div>
+                            <img src="assets/img/greviews-bg.png" class="star-comment-starbg">
+                        </div>
+                        <div class="container-star-comment" style="width: calc(5/5*100%);">
+                        <img src="assets/img/greviews.png" class="star-top-comments">
+                        </div>
+                        
+                    </div>
+                    <div class="message">Message</div>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="main" id="main">
+    </div>
+    <div class="reviews reviews2" id="googlestyle">
+    </div>
+</div>
+
+
+
+<script src="assets/jquery-3.6.0.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
