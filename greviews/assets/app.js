@@ -7,7 +7,6 @@ function getjosndata (){
     fetch("assets/csv_db_10.json")
     .then(res=>res.json())
     .then(res=>{
-        console.log(res[2])
     let template = '';
     let response = res[2].data[1];
     
@@ -41,7 +40,6 @@ function getjosndata (){
     $weeks=[];
 
     let response2= res[2].data
-    console.log(response2)
     for(x in response2){
         
     
@@ -109,7 +107,6 @@ function getjosndata (){
                     <div class="message"><p>${response2[x]['review_text']}</p></div>
                 </div>
         </div>`}
-console.log($counter);
 $('.reviews2').html(template2);
 $('.review-count').text($counter+' opiniones');
     
