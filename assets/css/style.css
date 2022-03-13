@@ -905,9 +905,6 @@ section {
   bottom: 0;
 }
 
-.portfolio-container{
-  height: 1786px;
-}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -952,6 +949,7 @@ section {
   color: #fff;
   font-size: 14px;
   position: relative;
+  height: 100%;
   
   
 }
@@ -1146,7 +1144,8 @@ section {
 .contact-reviews{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;  
+  justify-content: center;
+  align-items: center; 
 }
 
 .container-review iframe{
@@ -1170,5 +1169,5 @@ section {
   margin-left: 20px;
   width: calc(100vw*.45);
   min-width: 400px;
-  height: 300px;
+  height: 380px;
 }
