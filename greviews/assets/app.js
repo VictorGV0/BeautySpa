@@ -1,6 +1,8 @@
 $(document).ready(function(){
     console.log("jQuery is working");
-    getjosndata ()
+    setTimeout(() => {
+        getjosndata ();
+    }, 3000);
 
 /**FETCH DATA WITH JSON */
 function getjosndata (){
@@ -109,6 +111,8 @@ function getjosndata (){
         </div>`}
 $('.reviews2').html(template2);
 $('.review-count').text($counter+' opiniones');
+$('#preloader').remove();    
+
     
     })
 }

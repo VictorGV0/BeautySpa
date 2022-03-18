@@ -52,12 +52,11 @@ h1,h2, h3, h4, h5, h6 {
   position: relative;
   display: flex;
   visibility: hidden;
-  background: var(--main-ef-color);
+  background: black;
   width: 35px;
   height: 0px;
   border-radius: 50px;
   right: -2.5px;
-  
   transition: all 0.4s ;
 }
 .back-to-top i {
@@ -67,7 +66,7 @@ h1,h2, h3, h4, h5, h6 {
   visibility: hidden;
 }
 .back-to-top:hover {
-  background: var(--hover-color);
+  background: black;
   color: #fff;
   transform: scale(1.2);
 }
@@ -541,19 +540,6 @@ h1,h2, h3, h4, h5, h6 {
   }
 
 } 
-
-
-@media screen and (max-width: 315px) {
-  #body  {
-    display: none;
-  }
-}
-
-@media screen and (max-height: 315px) {
-  #body  {
-    display: none;
-  }
-}
 
 
 /*--------------------------------------------------------------
@@ -1170,4 +1156,52 @@ section {
   width: calc(100vw*.45);
   min-width: 400px;
   height: 380px;
+  border-radius: 20px;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #000000cb;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #fdfdfd00;
+  border-top-color: #ff88ff;
+  border-bottom-color: #fdfdfd00;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

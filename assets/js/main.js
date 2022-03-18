@@ -143,9 +143,10 @@
 })()
 
 $(document).ready(function(){
+  setTimeout(() => {
+    $('#preloader').remove();
 
-
-
+  }, 700);
  /**
    * Navbar links active state on scroll 
    */

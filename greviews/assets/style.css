@@ -71,7 +71,7 @@ h1:hover, h2:hover,h3:hover, a:hover {
 .reviews{
     display: flex;
     /* width: 100%; */
-    height: 400px;
+    height: 245px;
     flex-wrap: wrap;
     overflow-y: auto;
 }
@@ -176,6 +176,13 @@ h1:hover, h2:hover,h3:hover, a:hover {
 
 
 /* SCROLL BAR LIKE GOOGLE*/
+/*For MOZILLA*/
+#googlestyle{
+    scrollbar-color: #dadce0 #dadce000;
+    scrollbar-width: thin;
+}
+
+/*FOR CHROME*/
 #googlestyle::-webkit-scrollbar-track
 {
 	
@@ -194,3 +201,50 @@ h1:hover, h2:hover,h3:hover, a:hover {
     border-radius: 0;
     border-right: 0;
 }
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fdfdfd00;
+  }
+  
+  #preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #fdfdfd00;
+    border-top-color: #ff88ff;
+    border-bottom-color: #fdfdfd00;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+  }
+  
+  @-webkit-keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
